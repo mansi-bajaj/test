@@ -1,0 +1,79 @@
+#page1{
+	background: url(https://blog.hubspot.com/hubfs/books-every-aspiring-ceo-should-read.jpg);
+	background-position:  center center;
+	background-size: 100% 100%;
+	/*color:  #00001a;*/
+	/*text-align: center;*/
+	/*font-family: Times,serif;*/
+	/*font-weight: bold;*/
+}
+#page2,#page3,#page4{
+	background: url(https://img.freepik.com/free-photo/turquoise-matt-suede-fabric-background-velvet-texture_113767-1486.jpg?w=740);
+	background-position:  center center;
+	background-size: 100% 100%;
+    text-align: center;
+}
+
+
+h1{
+	font-family: Georgia,serif;
+	font-size: 60px;
+	color:  #00004d;
+    text-align: center;
+}
+#tagline{
+	font-family: cursive,sans-serif;
+	font-size: 30px;
+	color:  #cc0099;
+    text-align: center;
+}
+#userchoice{
+	width: 30%;
+	text-align: center;
+	margin:  20px auto;
+	font-weight: bold;
+	font-family: Georgia,serif;
+	font-size: 20px;
+}
+#text,#upload,#listen{
+	font-family: Georgia,serif;
+	font-weight: bold;
+	font-size: 20px;
+	background-color: #b3b3cc;
+	text-decoration-color: red;
+	border: 2px solid black;
+}
+#entertext,#uploadfile,#listentext{
+	color: black;
+	font-family: Georgia,serif;
+	font-size: 27px;
+}
+
+
+
+#error, #error2{
+	background-color: #D87777;
+	width: 50%;
+	margin: 20px auto;
+	font-size: 20px;
+}
+#result, #result2{
+	font-size: 50px;
+	background-color: rgba(255,255,255,0.5);
+	padding: 5% 0;
+}
+.full-width-slider input{
+	display:  none;
+}
+.full-width-slider .ui-slider-track{
+	margin-left: 15px;
+}
+#userInput{
+    width: 50%;
+    margin:  20px auto;
+}
+#controllers{
+	text-align: center;
+	width: 50%;
+	margin: 20px auto;
+}

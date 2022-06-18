@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			Speed reader App
+		</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.1/css/materialize.min.css">
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.13.216/pdf.min.js" integrity="sha512-IM60GPudO4jk+ZQm3UlJgKHhXQi5pNDM6mP+pLKL968YgkHMc7He3aGJOVHEZ9rJ4vAaEtJ8W6SKa7Qq4inzBA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.1/js/materialize.min.js"></script>
+
+        <link rel="stylesheet" href="app.css">
+	</head>
+	<body>
+		<div data-role="page" id="page1">
+			<div data-role="header">
+			</div>
+            <div role="main" class="ui-content">
+            	<div class="header">
+            		<h1> Reading Expert </h1>
+            		<p id="tagline"> To experience faster reading</p>
+            	</div>
+            	<div id="userchoice">
+            		<button id="text"><a href="#page2"> <span id="entertext">Enter Text</span></a></button>
+            		<p style="color:black;" "font-size:20px"> OR </p>
+            		<button id="upload"><a href="#page3"><span id="uploadfile">Upload a file</span></a></button>
+            		<p style="color:black;" "font-size:20px"> OR </p>
+            		<button id="listen"><a href="#page4"><span id="listentext">Listen the text</span></a></button>
+
+
+
+            	</div>
+            </div>
+		</div>
+		<div data-role="page" id="page2">
+			<div role="main" class="ui-content">
+				<div id="controllers">
+					<div style="color:black; font-weight:bold; font-size:20px; font-family:serif;"> Font-size:<span id="fontsize">50</span>px 
+					</div>
+					<!-- <div id="fontsizeslider"></div> -->
+					
+					<form class="full-width-slider" id="fontsizeslider-wrap">						
+						<input type="range" name="fontsizeslider" id="fontsizeslider" min="20" max="100" value="50" step="5" data-highlight="true">
+					</form>
+
+					<br><br>
+
+					<div style="color:black; font-weight:bold; font-size:20px; font-family:serif;">Speed:<span id="speed">300</span> words per minute</div>
+					<form class="full-width-slider" id="speedslider-wrap">						
+						<input type="range" name="speedslider" id="speedslider" min="50" max="600" value="300" step="50" data-highlight="true">
+					</form>
+					<br><br>
+					<form class="full-width-slider">
+						<label for="progressslider" style="color:black; font-weight:bold; font-size:20px; font-family:serif;">Progress: <span id="percentage">0</span>%</label>
+						<input type="range" name="progressslider" id="progressslider" min="0" max="100" value="0" data-highlight="true">
+					</form>
+				</div>
+				<div id="result"> word </div>
+				<div id="error">
+					You have not entered enough text!
+				</div>
+				<p id="pastetext" style="color:black; font-family: serif; font-size:30px; font-weight: bold;"> Paste the text to be read :</p>
+				<div id="inputs" style="text-align:center">
+
+					<textarea id="userInput" style=" width: 50%;
+    margin:  20px auto; font-family:serif; font-weight:bold;"></textarea>
+					<button id="start" style=" width: 50%;
+    margin:  20px auto; font-family:serif; font-weight:bold; font-size:20px; background-color:#ffe6f9;" > Start Reading</button>
+					<button id="refresh" style=" width: 50%;
+    margin:20px auto; font-family:serif; font-weight:bold; font-size:20px; background-color:#ffe6f9;"> Refresh </button>
+					<button id="pause" style=" width: 50%;
+    margin:20px auto; font-family:serif; font-weight:bold; font-size:20px; background-color:#ffe6f9;"> Pause</button>
+					<button id="resume" style=" width: 50%;
+    margin:  20px auto; font-family:serif; font-weight:bold; font-size:20px; background-color:#ffe6f9;"> Resume</button> 
+				</div>
+			</div>
+		</div>
+		<div data-role="page" id="page3">
+			<div data-role="header" >
+				
+			</div>
+			<div role="main" class="ui-content">
+				<p id="url" style="color:black; font-family: serif; font-size:20px; font-weight: bold;"> Enter url of the file to be read:</p>
+				<input type="url" id="inputurl" size="10">
+				<form action="/action_page.php">
+  <label for="pagenum">Enter pdf page no.:</label>
+				<input type="number" id="pageno" value="1" size="4">
+			</form>
+
+				<button id="submit">Submit</button>
+				<div id="controllers">
+					<div> Font-size:<span id="fontsize2">50</span>px 
+					</div>
+					<!-- <div id="fontsizeslider"></div> -->
+					
+					<form class="full-width-slider" id="fontsizeslider2-wrap">						
+						<input type="range" name="fontsizeslider2" id="fontsizeslider2" min="20" max="100" value="50" step="5" data-highlight="true">
+					</form>
+
+					<br><br>
+
+					<div><span id="speed2">300</span> words per minute</div>
+					<form class="full-width-slider" id="speedslider2-wrap">						
+						<input type="range" name="speedslider" id="speedslider2" min="50" max="600" value="300" step="50" data-highlight="true">
+					</form>
+					<br><br>
+					<form class="full-width-slider">
+						<label for="progressslider" >Progress: <span id="percentage2">0</span>%</label>
+						<input type="range" name="progressslider2" id="progressslider2" min="0" max="100" value="0" data-highlight="true">
+					</form>
+				</div>
+				<div id="result2"> word </div>
+				<div id="error2">
+					You have not entered enough text!
+				</div>
+				<div id="inputs2" style="text-align:center">
+
+					<div id="userInput2" style="border: 2px black; width: 50%;
+    margin:  20px auto; font-family:serif; font-weight:bold;"></div>
+					<button id="start2" style=" width: 50%;
+    margin:  20px auto; font-family:serif; font-weight:bold; font-size:20px; background-color:#ffe6f9;"> Start Reading</button>
+					<button id="refresh2" style=" width: 50%;
+    margin:  20px auto; font-family:serif; font-weight:bold; font-size:20px; background-color:#ffe6f9;"> Refresh </button>
+					<button id="pause2" style=" width: 50%;
+    margin:  20px auto; font-family:serif; font-weight:bold; font-size:20px; background-color:#ffe6f9;"> Pause</button>
+					<button id="resume2" style=" width: 50%;
+    margin:  20px auto; font-family:serif; font-weight:bold; font-size:20px; background-color:#ffe6f9;"> Resume</button> 
+
+				</div>
+
+                       </div>
+		</div>
+		<!--<div data-role="page" id="page4">
+			<div data-role="header" >
+				
+			</div>
+			<div role="main" class="ui-content">
+                              <div class="container">
+  <div class="row">
+    <nav>
+      <div class="nav-wrapper">
+        <div class="col s12">
+          <a href="#" class="brand-logo">Text to speech example</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <form class="col s8 offset-s2">
+    <div class="row">
+      <label>Choose voice</label>
+      <select id="voices"></select>
+    </div>
+    <div class="row">
+      <div class="col s6">
+        <label>Rate</label>
+        <p class="range-field">
+          <input type="range" id="rate" min="1" max="100" value="10" />
+        </p>
+      </div>
+      <div class="col s6">
+        <label>Pitch</label>
+        <p class="range-field">
+          <input type="range" id="pitch" min="0" max="2" value="1" />
+        </p>
+      </div>
+      <div class="col s12"> -->
+        <!-- <p>N.B. Rate and Pitch only work with native voice.</p> -->
+      <!-- </div> -->
+   <!--  </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <textarea id="message" class="materialize-textarea"></textarea>
+        <label>Write message</label>
+      </div>
+      <p style="color:black;" "font-size:20px"> OR </p>
+      <p id="url2" style="color:black; font-family: serif; font-size:20px; font-weight: bold;"> Enter url of the file to be read:</p>
+      <input type="url" id="inputurl2" size="10">
+       <form action="/action_page.php">
+  <label for="pagenum">Enter pdf page no.:</label>
+				<input type="number" id="pageno2" value="1" size="4">
+			</form>
+
+      <div id="userInput3" style="border: 2px black; width: 50%;
+    margin:  20px auto; font-family:serif; font-weight:bold;"></div>
+    </div>
+    <a href="#" id="speak" class="waves-effect waves-light btn">Speak</a>
+  </form>  
+</div>
+<div id="error3">
+	You have not entered enough text!
+</div>  -->
+<!-- <div id="modal1" class="modal"> -->
+
+  <!-- <h4>Speech Synthesis not supported</h4> -->
+  <!-- <p>Your browser does not support speech synthesis.</p> -->
+  <!-- <p>We recommend you use Google Chrome.</p> -->
+  <!-- <div class="action-bar"> -->
+    <!-- <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close">Close</a> -->
+  <!-- </div> -->
+<!-- </div> -->
+
+			
+
+		<script src="initial.js">
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+ <head>
+        <link rel="stylesheet" href="sr.css">
+      </head>
+
+<body>
+	
+<h1 style="text-align: center; font-family:serif;color:blueviolet;" > Speed Reader App</h1>
+
+<p style="font-family: cursive; font-size: 24px; color:orangered; text-align: center;">Type or paste the text to be read.</p>
+<div class='action-point' >
+<textarea style="width:300px;height:96px;" id="inputText"></textarea><br>
+<button type="button" id="processText" onclick="processText()">Process Text</button>
+<button type="button" id="StartReading" onclick="startReading()">Start Reading</button>
+<button type="button" id="StopReading" onclick="stopReading()">Stop Reading</button></br>
+<!--Report current speed of the reader-->
+Reading Delay:&nbsp <span id="readingDelay"></span> &nbsp milliseconds<br>
+
+
+<button type="button" id="decreaseSpeed" onclick="decreaseSpeed()">Decrease Speed</button>
+<button type="button" id="increaseSpeed" onclick="increaseSpeed()">Increase Speed</button></br></br>
+
+READ YOUR TEXT:</br>
+<div id="textDiv" style="width:400px; height:600; border:double; "></div>
+</div>
+<script type="text/javascript" src="sr.js"></script>
+</body>
+</html>
